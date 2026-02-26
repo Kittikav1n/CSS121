@@ -48,5 +48,6 @@ int main(){
     double AVRSCORE = AvrScore(data, 5);
     cout << "Name: " << MAXSCORE.name << " Score: " << MAXSCORE.score << " Grade: " << MAXSCORE.grade << endl;
     cout << "Name: " << MINSCORE.name << " Score: " << MINSCORE.score << " Grade: " << MINSCORE.grade << endl;
+    cout << "Average Score: " << AVRSCORE << endl;
     return 0;
 }
