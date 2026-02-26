@@ -35,19 +35,48 @@ double AvrScore(Student std[], int n){
     return sum;
 }
 
+double ModeScore(Student std[], int n){
+    double mode = std[0].score;
+    int all = 0;
+    for(int i = 0; i < n; i++){
+        int count = 0;
+        for (int j = 0; j < n; j++)
+        {
+            if(std[i].score == std[j].score){
+                count++;
+            }
+        }
+        if(count > all){
+            all = count;
+            mode = std[i].score;
+        }
+        
+    }
+    return mode;
+}
+
 int main(){
-    Student data[5] = {
-        {"Alice", 85.5, 'A'},
+    Student data[10] = {
+        {"Alice", 87.5, 'A'},
         {"Bob", 78.0, 'B'},
         {"Charlie", 92.0, 'A'},
-        {"David", 88.5, 'A'},
-        {"Eve", 80.0, 'B'}
+        {"David", 86.5, 'A'},
+        {"Eve", 85.5, 'B'},
+        {"Frank", 78.0, 'B'},
+        {"Grace", 88.5, 'A'},
+        {"Heidi", 88.5, 'B'},
+        {"Ivan", 88.5, 'A'},
+        {"Judy", 85.5, 'B'}
+
     };
-    Student MAXSCORE = MaxStudent(data, 5);
-    Student MINSCORE = MinStudent(data, 5);
-    double AVRSCORE = AvrScore(data, 5);
+    Student MAXSCORE = MaxStudent(data, 10);
+    Student MINSCORE = MinStudent(data, 10);
+    double AVRSCORE = AvrScore(data, 10);
+    double MODE = ModeScore(data, 10);
+
     cout << "Name: " << MAXSCORE.name << " Score: " << MAXSCORE.score << " Grade: " << MAXSCORE.grade << endl;
     cout << "Name: " << MINSCORE.name << " Score: " << MINSCORE.score << " Grade: " << MINSCORE.grade << endl;
     cout << "Average Score: " << AVRSCORE << endl;
+    cout << "Mode Score: " << MODE << endl;
     return 0;
 }
