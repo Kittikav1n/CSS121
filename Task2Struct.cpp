@@ -81,6 +81,16 @@ double MedianScore(Student std[], int n){
     return median;
 }
 
+double SDScore(Student std[], int n){
+    double sum = 0.0;
+    double mean = AvrScore(std, n);
+    for(int i = 0; i < n; i++){
+        sum += (std[i].score - mean) * (std[i].score - mean);
+    }
+    double sd = sqrt(sum / n);
+    return sd;
+}
+
 int main(){
     Student data[10] = {
         {"Alice", 87.5, 'A'},
@@ -95,16 +105,19 @@ int main(){
         {"Judy", 85.5, 'B'}
 
     };
+
     Student MAXSCORE = MaxStudent(data, 10);
     Student MINSCORE = MinStudent(data, 10);
     double AVRSCORE = AvrScore(data, 10);
     double MODE = ModeScore(data, 10);
     double MEDIAN = MedianScore(data, 10);
+    double SD = SDScore(data, 10);
 
-    cout << "Name: " << MAXSCORE.name << " Score: " << MAXSCORE.score << " Grade: " << MAXSCORE.grade << endl;
-    cout << "Name: " << MINSCORE.name << " Score: " << MINSCORE.score << " Grade: " << MINSCORE.grade << endl;
+    cout << "Max Score ->" << " Name: " << MAXSCORE.name << " Score: " << MAXSCORE.score << " Grade: " << MAXSCORE.grade << endl;
+    cout << "Min Score ->" << " Name: " << MINSCORE.name << " Score: " << MINSCORE.score << " Grade: " << MINSCORE.grade << endl;
     cout << "Average Score: " << AVRSCORE << endl;
     cout << "Mode Score: " << MODE << endl;
     cout << "Median Score: " << MEDIAN << endl;
+    cout << "SD Score: " << SD << endl;
     return 0;
 }
