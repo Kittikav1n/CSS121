@@ -91,18 +91,35 @@ double SDScore(Student std[], int n){
     return sd;
 }
 
+void OutGrade(Student std[], int n){
+    for(int i = 0; i < n; i++){
+        for(int j = i + 1; j < n; j++){
+            if(std[i].score < std[j].score){
+                Student temp = std[i];
+                std[i] = std[j];
+                std[j] = temp;
+            }
+        }
+    }
+    for(int i = 0; i < n; i++){
+        cout << "Name: " << std[i].name << " Score: " << std[i].score << " Grade: " << std[i].grade << endl;
+    }
+    cout << endl;
+}
+
+
 int main(){
     Student data[10] = {
         {"Alice", 87.5, 'A'},
         {"Bob", 78.0, 'B'},
         {"Charlie", 92.0, 'A'},
         {"David", 86.5, 'A'},
-        {"Eve", 85.5, 'B'},
+        {"Eve", 85.5, 'A'},
         {"Frank", 78.0, 'B'},
         {"Grace", 88.5, 'A'},
-        {"Heidi", 88.5, 'B'},
+        {"Heidi", 88.5, 'A'},
         {"Ivan", 88.5, 'A'},
-        {"Judy", 85.5, 'B'}
+        {"Judy", 85.5, 'A'}
 
     };
 
@@ -112,6 +129,8 @@ int main(){
     double MODE = ModeScore(data, 10);
     double MEDIAN = MedianScore(data, 10);
     double SD = SDScore(data, 10);
+    OutGrade(data, 10);
+
 
     cout << "Max Score ->" << " Name: " << MAXSCORE.name << " Score: " << MAXSCORE.score << " Grade: " << MAXSCORE.grade << endl;
     cout << "Min Score ->" << " Name: " << MINSCORE.name << " Score: " << MINSCORE.score << " Grade: " << MINSCORE.grade << endl;
